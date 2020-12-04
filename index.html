@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Study</title>
+  </head>
+  <body>
+    <h1>FizzBuzz問題</h1>
+    <form>
+      <div class="">
+        <label for="fizzNum">FizzNum: </label>
+        <input id="fizzNum" type="text" name="fizzNum" value="" placeholder="整数値を入力してください">
+      </div>
+      <div class="">
+        <label for="buzzNum">BuzzNum:</label>
+        <input id="buzzNum" type="text" name="buzzNum" value="" placeholder="整数値を入力してください">
+      </div>
+      <input id="btn" type="button" value="実行">
+    </form>
+
+    <script type="text/javascript">
+
+
+      document.getElementById('btn').addEventListener('click', () => {
+        const fizz = document.getElementById('fizzNum').value;
+        const buzz = document.getElementById('buzzNum').value;
+        const fizzBuzz = fizz * buzz;
+
+
+        for(let i = 1; i < 100; i++){
+          const makeDiv = document.createElement('div');
+
+          if(i % fizzBuzz === 0){
+            makeDiv.textContent = `FizzBuzz ${i}`;
+          }
+          else if(i % buzz === 0){
+            makeDiv.textContent = `Buzz ${i}`;
+          }
+          else if(i % fizz === 0){
+            makeDiv.textContent = `Fizz ${i}`;
+          }
+          document.body.appendChild(makeDiv);
+        }
+
+
+      });
+
+    </script>
+
+  </body>
+</html>
