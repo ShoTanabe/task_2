@@ -17,33 +17,12 @@
       </div>
       <input id="btn" type="button" value="実行">
     </form>
+    <p>【出力】</p>
+    <div id="listarea">
+    </div>
 
     <script type="text/javascript">
 
-
-      document.getElementById('btn').addEventListener('click', () => {
-        const fizz = document.getElementById('fizzNum').value;
-        const buzz = document.getElementById('buzzNum').value;
-        const fizzBuzz = fizz * buzz;
-
-
-        for(let i = 1; i < 100; i++){
-          const makeDiv = document.createElement('div');
-
-          if(i % fizzBuzz === 0){
-            makeDiv.textContent = `FizzBuzz ${i}`;
-          }
-          else if(i % buzz === 0){
-            makeDiv.textContent = `Buzz ${i}`;
-          }
-          else if(i % fizz === 0){
-            makeDiv.textContent = `Fizz ${i}`;
-          }
-          document.body.appendChild(makeDiv);
-        }
-
-
-      });
 
     </script>
 
