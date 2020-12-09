@@ -17,7 +17,10 @@
       </div>
       <input id="btn" type="button" value="実行">
     </form>
-    <p id="point">【出力】</p>
+    <p>【出力】</p>
+    <div id="listarea">
+
+    </div>
 
     <script type="text/javascript">
 
@@ -27,51 +30,41 @@
         const fizz = document.getElementById('fizzNum').value;
         const buzz = document.getElementById('buzzNum').value;
 
-        // テキストボックスの入力を数値に変換し整数判定
+        // テキストボックスの入力を数値に変換して整数かどうかチェック
         const fizzNum = Number.isInteger( Number(fizz) );
         const buzzNum = Number.isInteger( Number(buzz) );
 
-        //  すでに【出力】以下が表示されている場合は一度リセット
-        const listAreaOld = document.getElementById('listarea');
-        if(listAreaOld !== null){
-          listAreaOld.parentNode.removeChild(listAreaOld);
-        }
-
-        //【出力】以下を表示するエリアを作成
-        const makeArea = document.createElement('div');
-        const point = document.getElementById('point');
-        point.after(makeArea);
-        const div = document.getElementsByTagName('div');
-        div[2].setAttribute('id','listarea');
-
-        const listAreaNew = document.getElementById('listarea');
+        // 前回実行時の出力を削除
+        const listArea = document.getElementById('listarea');
+        listArea.innerHTML = '';
 
         // 整数でない場合と未入力のエラー表示
-        if(fizzNum === false || buzzNum === false || fizz === '' || buzz === ''){
-          const makeError = document.createElement('div');
-          makeError.textContent = `整数値を入力してください`;
-          listAreaNew.appendChild(makeError);
-        }
-        else{
-
-          for(let number = 1; number < 100; number++){
-            const makeDiv = document.createElement('div');
-
-            if(number % fizz === 0 && number % buzz === 0){
-              makeDiv.textContent = `FizzBuzz ${number}`;
-            }
-            else if(number % buzz === 0){
-              makeDiv.textContent = `Buzz ${number}`;
-            }
-            else if(number % fizz === 0){
-              makeDiv.textContent = `Fizz ${number}`;
-            }
-            else{
-              continue;
-            }
-            listAreaNew.appendChild(makeDiv);
+        const makeError = document.createElement('div');
+          if(fizzNum === false || buzzNum === false || fizz === '' || buzz === ''){
+            makeError.textContent = `整数値を入力してください`;
+            listArea.appendChild(makeError);
           }
-        }
+          else{
+
+            //整数が入っていた場合の表示分け
+            for(let number = 1; number < 100; number++){
+              const makeDiv = document.createElement('div');
+              if(number % fizz === 0 && number % buzz === 0){
+                makeDiv.textContent = `FizzBuzz ${number}`;
+              }
+              else if(number % buzz === 0){
+                makeDiv.textContent = `Buzz ${number}`;
+              }
+              else if(number % fizz === 0){
+                makeDiv.textContent = `Fizz ${number}`;
+              }
+              else{
+                continue;
+              }
+              listArea.appendChild(makeDiv);
+            }
+
+          }
       });
 
     </script>
