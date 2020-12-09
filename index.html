@@ -19,6 +19,7 @@
     </form>
     <p>【出力】</p>
     <div id="listarea">
+
     </div>
 
     <script type="text/javascript">
@@ -29,7 +30,7 @@
         const fizz = document.getElementById('fizzNum').value;
         const buzz = document.getElementById('buzzNum').value;
 
-        // テキストボックスの入力を数値に変換
+        // テキストボックスの入力を数値に変換して整数かどうかチェック
         const fizzNum = Number.isInteger( Number(fizz) );
         const buzzNum = Number.isInteger( Number(buzz) );
 
@@ -38,31 +39,32 @@
         listArea.innerHTML = '';
 
         // 整数でない場合と未入力のエラー表示
-        if(fizzNum === false || buzzNum === false || fizz === '' || buzz === ''){
-          const makeError = document.createElement('div');
-          makeError.textContent = `整数値を入力してください`;
-          listArea.appendChild(makeError);
-        }
-        else{
-
-          for(let number = 1; number < 100; number++){
-            const makeDiv = document.createElement('div');
-
-            if(number % fizz === 0 && number % buzz === 0){
-              makeDiv.textContent = `FizzBuzz ${number}`;
-            }
-            else if(number % buzz === 0){
-              makeDiv.textContent = `Buzz ${number}`;
-            }
-            else if(number % fizz === 0){
-              makeDiv.textContent = `Fizz ${number}`;
-            }
-            else{
-              continue;
-            }
-            listArea.appendChild(makeDiv);
+        const makeError = document.createElement('div');
+          if(fizzNum === false || buzzNum === false || fizz === '' || buzz === ''){
+            makeError.textContent = `整数値を入力してください`;
+            listArea.appendChild(makeError);
           }
-        }
+          else{
+
+            //整数が入っていた場合の表示分け
+            for(let number = 1; number < 100; number++){
+              const makeDiv = document.createElement('div');
+              if(number % fizz === 0 && number % buzz === 0){
+                makeDiv.textContent = `FizzBuzz ${number}`;
+              }
+              else if(number % buzz === 0){
+                makeDiv.textContent = `Buzz ${number}`;
+              }
+              else if(number % fizz === 0){
+                makeDiv.textContent = `Fizz ${number}`;
+              }
+              else{
+                continue;
+              }
+              listArea.appendChild(makeDiv);
+            }
+
+          }
       });
 
     </script>
